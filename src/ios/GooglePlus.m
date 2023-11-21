@@ -61,13 +61,15 @@
                            @"email"           : email,
                            @"userId"          : userId,
                            @"idToken"         : user.authentication.idToken,
+                           @"accessToken"     : user.authentication.accessToken,
                            @"displayName"     : user.profile.name       ? : [NSNull null],
                            @"givenName"       : user.profile.givenName  ? : [NSNull null],
                            @"familyName"      : user.profile.familyName ? : [NSNull null],
                            @"imageUrl"        : imageUrl ? imageUrl.absoluteString : [NSNull null],
                            };
 
-            CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: [self toJSONString:result]];
+            //CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: [self toJSONString:result]];
+            CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:self->_callbackId];
         }
     }];
